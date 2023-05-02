@@ -25,10 +25,10 @@ function LightProductCard({ product }: Props) {
    return (
       <div className={"flex flex-col items-center md:w-1/3"}>
          <img
-            src={`/src/${product && product.image.mobile}`}
-            srcSet={`/src/${product && product.image.mobile} 654w, /src/${
+            src={`./${product && product.image.mobile}`}
+            srcSet={`./${product && product.image.mobile} 654w, ./${
                product && product.image.tablet
-            } 562w, /src/${product && product.image.desktop} 1080w`}
+            } 562w, ./${product && product.image.desktop} 1080w`}
             sizes="(max-width: 767px) 654px, (max-width: 1023px) 562px, 100vw"
             className="rounded-lg"
          />

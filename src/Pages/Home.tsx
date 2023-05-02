@@ -97,8 +97,8 @@ function Home(props: Props) {
                      <div className="flex flex-col  space-y-8 h-full items-center md:space-y-16 lg:justify-between lg:flex-row ">
                         <img
                            className="w-[53%] max-w-[197px] lg:max-w-none lg:h-auto lg:w-[42%] lg:self-end z-0 lg:-mb-4"
-                           src="/src/assets/home/mobile/image-speaker-zx9.png"
-                           srcSet="/src/assets/home/mobile/image-speaker-zx9.png 320w, /src/assets/home/tablet/image-speaker-zx9.png 366w, /src/assets/home/desktop/image-speaker-zx9.png 756w"
+                           src="./assets/home/mobile/image-speaker-zx9.png"
+                           srcSet="./assets/home/mobile/image-speaker-zx9.png 320w, ./assets/home/tablet/image-speaker-zx9.png 366w, ./assets/home/desktop/image-speaker-zx9.png 756w"
                            sizes="(max-width: 767px) 320px, (max-width: 1023px) 366px, 100vw "
                         />
                         <div className=" flex flex-col items-center max-w-[325px] md:max-w-[350px]  text-white space-y-6 text-center lg:max-w-none lg:text-start lg:w-1/3 lg:min-w-[260px] lg:items-start z-0">
@@ -121,8 +121,8 @@ function Home(props: Props) {
 
                   <div className="relative rounded-lg w-full aspect-[1.02] md:aspect-[2.15] md:max-h-[320px] lg:aspect-[3.5] lg:max-h-full">
                      <img
-                        src="/src/assets/home/mobile/image-speaker-zx7.jpg"
-                        srcSet="/src/assets/home/mobile/image-speaker-zx7.jpg 654w, /src/assets/home/tablet/image-speaker-zx7.jpg 689w, /src/assets/home/desktop/image-speaker-zx7.jpg 1110w"
+                        src="./assets/home/mobile/image-speaker-zx7.jpg"
+                        srcSet="./assets/home/mobile/image-speaker-zx7.jpg 654w, ./assets/home/tablet/image-speaker-zx7.jpg 689w, ./assets/home/desktop/image-speaker-zx7.jpg 1110w"
                         sizes="(max-width: 767px) 654px, (max-width: 1023px) 689px, 100vw"
                         className="w-full h-full rounded-lg "
                      />
@@ -140,9 +140,9 @@ function Home(props: Props) {
                   </div>
                   <div className="flex rounded-lg flex-col space-y-6 md:flex-row md:space-y-0 md:space-x-3 lg:space-y-0 lg:space-x-[30px]">
                      <img
-                        src="/src/assets/home/desktop/image-earphones-yx1.jpg"
+                        src="./assets/home/desktop/image-earphones-yx1.jpg"
                         alt=""
-                        srcSet="/src/assets/home/mobile/image-earphones-yx1.jpg 654w, /src/assets/home/tablet/image-earphones-yx1.jpg 678w, /src/assets/home/desktop/image-earphones-yx1.jpg 540w"
+                        srcSet="./assets/home/mobile/image-earphones-yx1.jpg 654w, ./assets/home/tablet/image-earphones-yx1.jpg 678w, ./assets/home/desktop/image-earphones-yx1.jpg 540w"
                         sizes=" (max-width:767px) 654px, (max-width:1023px) 678px, 100vw"
                         className="flex rounded-lg w-full aspect-[1.55] md:w-1/2 md:aspect-[1.2] lg:aspect-[1.73] "
                      />

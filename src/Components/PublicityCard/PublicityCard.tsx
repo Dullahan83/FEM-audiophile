@@ -8,8 +8,8 @@ function PublicityCard(props: Props) {
       <figure className="flex flex-col space-y-10 lg:flex-row-reverse lg:space-y-0 lg:w-full lg:justify-between">
          <img
             className="rounded-lg lg:w-[48.65%] lg:aspect-[0.918]"
-            src="/src/assets/shared/desktop/image-best-gear.jpg"
-            srcSet="/src/assets/shared/mobile/image-best-gear.jpg 654w, /src/assets/shared/tablet/image-best-gear.jpg 1378w, /src/assets/shared/desktop/image-best-gear.jpg 540w"
+            src="./assets/shared/desktop/image-best-gear.jpg"
+            srcSet="./assets/shared/mobile/image-best-gear.jpg 654w, ./assets/shared/tablet/image-best-gear.jpg 1378w, ./assets/shared/desktop/image-best-gear.jpg 540w"
             sizes="(max-width: 767px) 654px, (min-width:1023px) 540px, 100vw"
             alt=""
          />

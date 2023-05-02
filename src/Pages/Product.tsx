@@ -86,12 +86,12 @@ function Product(props: Props) {
                   </div>
                   <div className="space-y-5 rounded-lg md:flex md:flex-col md:flex-wrap md:h-[368px]  md:justify-between md:content-between  md:space-y-0 lg:h-[592px]">
                      <img
-                        src={`/src/${product && product.gallery.first.mobile}`}
-                        srcSet={`/src/${
+                        src={`./${product && product.gallery.first.mobile}`}
+                        srcSet={`./${
                            product && product.gallery.first.mobile
-                        } 654w, /src/${
+                        } 654w, ./${
                            product && product.gallery.first.tablet
-                        } 554w, /src/${
+                        } 554w, ./${
                            product && product.gallery.first.desktop
                         } 445w`}
                         sizes="(max-width: 767px) 654px, (max-width: 1023px) 554px,100vw"
@@ -99,12 +99,12 @@ function Product(props: Props) {
                         className="rounded-[inherit] w-full aspect-[1.88] md:w-[40.27%]  md:h-[47.3%] md:order-1"
                      />
                      <img
-                        src={`/src/${product && product.gallery.second.mobile}`}
-                        srcSet={`/src/${
+                        src={`./${product && product.gallery.second.mobile}`}
+                        srcSet={`./${
                            product && product.gallery.second.mobile
-                        } 654w, /src/${
+                        } 654w, ./${
                            product && product.gallery.second.tablet
-                        } 554w, /src/${
+                        } 554w, ./${
                            product && product.gallery.second.desktop
                         } 445w`}
                         sizes="(max-width: 767px) 654px, (max-width: 1023px) 554px,100vw"
@@ -112,12 +112,12 @@ function Product(props: Props) {
                         className="rounded-[inherit] w-full aspect-[1.88] md:w-[40.27%] md:h-[47.3%] md:order-2"
                      />
                      <img
-                        src={`/src/${product && product.gallery.third.mobile}`}
-                        srcSet={`/src/${
+                        src={`./${product && product.gallery.third.mobile}`}
+                        srcSet={`./${
                            product && product.gallery.third.mobile
-                        } 654w, /src/${
+                        } 654w, ./${
                            product && product.gallery.third.tablet
-                        } 790w, /src/${
+                        } 790w, ./${
                            product && product.gallery.third.desktop
                         } 635w`}
                         sizes="(max-width: 767px) 654px, (max-width: 1023px) 790px,100vw"

@@ -6,7 +6,7 @@ interface Props {
 }
 
 function Thumbnail({ title, imgSource }: Props) {
-   const path = "/src/assets/shared";
+   const path = "./assets/shared";
    return (
       <>
          <div className="flex flex-col relative items-center lg:w-1/3 uppercase after:content-[''] after:z-[-1] after:rounded-lg after:absolute after:bottom-0 after:w-full after:aspect-[1.98] after:max-h-[68%] after:md:aspect-[1.35] after:md:max-h-[72%] after:lg:aspect-[1.71]  after:bg-tertiary">

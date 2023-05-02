@@ -100,8 +100,8 @@ function ProductCard({
                }
             >
                <img
-                  src="src/assets/home/desktop/Bitmap.png"
-                  srcSet="src/assets/home/mobile/Bitmap.png 375w, src/assets/home/tablet/Bitmap.png 768w, src/assets/home/desktop/Bitmap.png 1024w"
+                  src="./assets/home/desktop/Bitmap.png"
+                  srcSet="src/assets/home/mobile/Bitmap.png 375w, ./assets/home/tablet/Bitmap.png 768w, ./assets/home/desktop/Bitmap.png 1024w"
                   sizes="(max-width: 767px) 375px, (max-width:1023px) 768px, 100vw"
                   className="  object-cover md:object-contain lg:object-cover w-full h-full"
                />
@@ -147,12 +147,10 @@ function ProductCard({
                </Button>
             </div>
             <img
-               src={`/src/${product && product.categoryImage.mobile}`}
-               srcSet={`/src/${
-                  product && product.categoryImage.mobile
-               } 654w, /src/${
+               src={`./${product && product.categoryImage.mobile}`}
+               srcSet={`./${product && product.categoryImage.mobile} 654w, ./${
                   product && product.categoryImage.tablet
-               } 1378w, /src/${product && product.categoryImage.desktop} 1080w`}
+               } 1378w, ./${product && product.categoryImage.desktop} 1080w`}
                sizes="(max-width: 767px) 654px, (max-width: 1023px) 1378px, (min-width: 1024px) 1080px, 100vw"
                alt=""
                className=" rounded-lg w-full aspect-[0.93] md:aspect-[1.95] lg:aspect-[0.964] lg:w-[48.65%]"
@@ -203,10 +201,10 @@ function ProductCard({
             </div>
 
             <img
-               src={`/src/${product && product.image.mobile}`}
-               srcSet={`/src/${product && product.image.mobile} 654w, /src/${
+               src={`./${product && product.image.mobile}`}
+               srcSet={`./${product && product.image.mobile} 654w, ./${
                   product && product.image.tablet
-               } 562w, /src/${product && product.image.desktop} 1080w`}
+               } 562w, ./${product && product.image.desktop} 1080w`}
                sizes="(max-width: 767px) 654px, (max-width: 1023px) 562px, 100vw"
                alt=""
                className=" rounded-lg md:w-[39%] lg:w-[48.65%]"
