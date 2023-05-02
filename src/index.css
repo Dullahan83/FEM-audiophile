@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+   font-family: "Manrope", sans-serif;
+}
+
+*,
+::after,
+::before {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+#root {
+   width: 100%;
+   height: 100%;
+   min-height: 100vh;
+   /* max-width: 1440px;
+   max-height: 1024px; */
+}
+
+a {
+   text-decoration: none;
+   cursor: pointer;
+}
+main {
+   background-color: #fafafa;
+}
+h1,
+h2,
+h3,
+h4 {
+   text-transform: uppercase;
+}
+
+.noscroll {
+   overflow: hidden;
+}
+input[type="checkbox"] {
+   margin-right: 16px;
+   width: 20px;
+   aspect-ratio: 1;
+   position: relative;
+   appearance: none;
+   -webkit-appearance: none;
+}
+input[type="checkbox"]::before,
+input[type="checkbox"]::after {
+   content: "";
+   position: absolute;
+   border-radius: 100%;
+   aspect-ratio: 1;
+}
+input[type="checkbox"]::before {
+   top: 0;
+   left: 0;
+   width: 100%;
+   border: 1px solid #cfcfcf;
+}
+input[type="checkbox"]::after {
+   width: 50%;
+   background-color: #d87d4a;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%) scale(0);
+}
+input[type="checkbox"]:checked::after {
+   transform: translate(-50%, -50%) scale(1);
+}
