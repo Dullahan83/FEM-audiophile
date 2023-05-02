@@ -101,7 +101,7 @@ function ProductCard({
             >
                <img
                   src="./assets/home/desktop/Bitmap.png"
-                  srcSet="src/assets/home/mobile/Bitmap.png 375w, ./assets/home/tablet/Bitmap.png 768w, ./assets/home/desktop/Bitmap.png 1024w"
+                  srcSet="./assets/home/mobile/Bitmap.png 375w, ./assets/home/tablet/Bitmap.png 768w, ./assets/home/desktop/Bitmap.png 1024w"
                   sizes="(max-width: 767px) 375px, (max-width:1023px) 768px, 100vw"
                   className="  object-cover md:object-contain lg:object-cover w-full h-full"
                />
