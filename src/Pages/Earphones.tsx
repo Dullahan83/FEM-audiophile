@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import CategoryHeading from "../Components/CategoryHeading/CategoryHeading";
-import ProductCard from "../Components/ProductCard/ProductCard";
+import ProductCard, {
+   CategoryCard,
+} from "../Components/ProductCard/ProductCard";
 import PublicityCard from "../Components/PublicityCard/PublicityCard";
 import ThumbnailGroup from "../Components/Thumbnail/ThumbnailGroup";
 import { useAppDispatch, useAppSelector } from "../Features/Hooks";
@@ -58,11 +60,10 @@ function Earphones(props: Props) {
                {earphones.length &&
                   earphones.map((earphone: Product, key: number) => {
                      return (
-                        <ProductCard
+                        <CategoryCard
                            product={earphone}
                            key={key}
                            btnStyle="orangeBtn"
-                           style="categoryCard"
                         />
                      );
                   })}

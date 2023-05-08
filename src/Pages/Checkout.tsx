@@ -1,10 +1,11 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useReducer, useRef, useState } from "react";
 import BackButton from "../Components/BackButton/BackButton";
 import Button from "../Components/Button/Button";
 import InputLabel from "../Components/InputLabel/InputLabel";
 import Modal, { Confirmation } from "../Components/Modal/Modal";
 import ProductCartCard from "../Components/ProductCartCard/ProductCartCard";
 import { useAppSelector } from "../Features/Hooks";
+import { checkFormValidity } from "../Utils/Utils";
 
 interface Props {}
 import Layout from "../Layout/Layout";
@@ -30,7 +31,6 @@ export type FormField = Partial<FormType>;
 
 function Checkout(props: Props) {
    const {} = props;
-
    const {
       showCart,
       productInCart,
@@ -43,39 +43,9 @@ function Checkout(props: Props) {
    const [onCash, setOnCash] = useState(false);
    const [eMoney, setEmoney] = useState(true);
    const [isConfirmed, setIsConfirmed] = useState(false);
-   const [disable, setDisable] = useState(true);
+   let isValid = checkFormValidity();
+   const formRef = useRef(null);
    const [formState, setFormState] = useState({
-      name: "azretr",
-      email: "",
-      phoneNumber: "",
-      address: "",
-      zipCode: "",
-      city: "",
-      country: "",
-      eNumber: "",
-      ePin: "",
-   });
-   const {
-      name,
-      email,
-      phoneNumber,
-      address,
-      zipCode,
-      city,
-      country,
-      eNumber,
-      ePin,
-   } = formState;
-   // const [name, setName] = useState("");
-   // const [email, setEmail] = useState("");
-   // const [phoneNumber, setPhoneNumber] = useState("");
-   // const [address, setAddress] = useState("");
-   // const [zipCode, setZipCode] = useState("");
-   // const [city, setCity] = useState("");
-   // const [country, setCounrty] = useState("");
-   // const [eNumber, setENumber] = useState("");
-   // const [ePin, setEPin] = useState("");
-   const form: FormType = {
       name: "",
       email: "",
       phoneNumber: "",
@@ -85,12 +55,7 @@ function Checkout(props: Props) {
       country: "",
       eNumber: "",
       ePin: "",
-   };
-   // const [formData, setFormData] = useState(form);
-   // const [formState, setFormState] = useReducer(
-   //    (state: FormType, update: Partial<FormType>) => ({ ...state, ...update }),
-   //    form
-   // );
+   });
 
    const handleChange = (key: keyof FormType, value: string) => {
       setFormState((prev) => {
@@ -98,9 +63,123 @@ function Checkout(props: Props) {
          newState[key] = value;
          return newState;
       });
-      console.log(formState);
    };
+   const InputGroup1 = [
+      {
+         index: 1,
+         type: "text",
+         placeholder: "Alexei Ward",
+         name: "name",
+         id: "name",
+         label: "Name",
+         pattern: "^[A-Z]{1}[a-z]{3,}[ -]{1}[A-Z]{1}[a-z]{1,}",
+         required: true,
+         value: formState["name"],
+         setState: handleChange,
+      },
+      {
+         index: 2,
+         type: "email",
+         placeholder: "alexeiward@mail.com",
+         name: "email",
+         id: "email",
+         label: "Email Address",
+         pattern: "[a-zA-Z0-9.]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,5}",
+         required: true,
+         value: formState["email"],
+         setState: handleChange,
+      },
+      {
+         index: 3,
+         type: "text",
+         placeholder: "+1202-555-0136",
+         name: "phoneNumber",
+         id: "phoneNumber",
+         label: "Phone Number",
+         pattern: "^[+]{1}[0-9-]{8,13}",
+         required: true,
+         value: formState["phoneNumber"],
+         setState: handleChange,
+      },
+   ];
+   const InputGroup2 = [
+      {
+         index: 1,
+         type: "text",
+         placeholder: "1137 Williams Avenue",
+         name: "address",
+         id: "address",
+         label: "Address",
+         pattern: "^[0-9]{1,4}[ ]{1}[a-zA-Z ]{4,}",
+         required: true,
+         value: formState["address"],
+         setState: handleChange,
 
+         Class: "full",
+      },
+      {
+         index: 2,
+         type: "text",
+         placeholder: "10001",
+         name: "zipCode",
+         id: "zipCode",
+         label: "ZIP Code",
+         pattern: "[0-9]{3,5}",
+         required: true,
+         value: formState["zipCode"],
+         setState: handleChange,
+      },
+      {
+         index: 3,
+         type: "text",
+         placeholder: "New York",
+         name: "city",
+         id: "city",
+         label: "City",
+         pattern: "[a-zA-Z -]{5,}",
+         required: true,
+         value: formState["city"],
+         setState: handleChange,
+      },
+      {
+         index: 4,
+         type: "text",
+         placeholder: "United States",
+         name: "country",
+         id: "country",
+         label: "Country",
+         pattern: "[a-zA-Z -]{5,}",
+         required: true,
+         value: formState["country"],
+         setState: handleChange,
+      },
+   ];
+   const InputGroup3 = [
+      {
+         index: 1,
+         type: "text",
+         placeholder: "238521993",
+         name: "eNumber",
+         id: "eNumber",
+         label: "e-Money Number",
+         pattern: "[0-9]{9}",
+         required: true,
+         value: formState["eNumber"],
+         setState: handleChange,
+      },
+      {
+         index: 2,
+         type: "text",
+         placeholder: "10001",
+         name: "ePin",
+         id: "ePin",
+         label: "e-Money Pin",
+         pattern: "[0-9]{4}",
+         required: true,
+         value: formState["ePin"],
+         setState: handleChange,
+      },
+   ];
    const handleEmoneyMethod = () => {
       setEmoney(true);
       setOnCash(false);
@@ -108,23 +187,13 @@ function Checkout(props: Props) {
    const handleCashMethod = () => {
       setEmoney(false);
       setOnCash(true);
+      isValid = checkFormValidity();
    };
    const handleConfirmation = () => {
-      if (
-         name &&
-         email &&
-         phoneNumber &&
-         address &&
-         zipCode &&
-         city &&
-         country &&
-         ((onCash && eNumber && ePin) || eMoney)
-      ) {
+      if (isValid) {
          setIsConfirmed(true);
-         setDisable(false);
       }
       setIsConfirmed(false);
-      setDisable(true);
    };
 
    return (
@@ -137,80 +206,26 @@ function Checkout(props: Props) {
                      <h1 className="text-2.5xl font-bold tracking-[1px] mb-8 md:text-h3">
                         checkout
                      </h1>
-                     <form className="space-y-8">
+                     <form className="space-y-8 ">
                         <div className="flex flex-wrap space-y-6 md:justify-between">
                            <p className="w-full text-sub uppercase text-primary -mb-2">
                               billing details
                            </p>
-                           <InputLabel
-                              ID="name"
-                              Type="text"
-                              Placeholder="Alexei Ward"
-                              // setState={setName}
-                              setState={handleChange}
-                           >
-                              name
-                           </InputLabel>
-                           <InputLabel
-                              ID="email"
-                              Type="mail"
-                              Placeholder="alexei@mail.com"
-                              // setState={setEmail}
-                              setState={handleChange}
-                           >
-                              email address
-                           </InputLabel>
-                           <InputLabel
-                              ID="phoneNumber"
-                              Type="text"
-                              Placeholder="+1 202-555-0136"
-                              // setState={setPhoneNumber}
-                              setState={handleChange}
-                           >
-                              phone number
-                           </InputLabel>
+                           {InputGroup1.map((input) => {
+                              return (
+                                 <InputLabel key={input.index} {...input} />
+                              );
+                           })}
                         </div>
                         <div className="flex flex-wrap space-y-6 md:justify-between">
                            <p className="w-full text-sub uppercase text-primary -mb-2">
                               shipping info
                            </p>
-                           <InputLabel
-                              ID="address"
-                              Type="text"
-                              Placeholder="1137 Williams Avenue"
-                              Class="full"
-                              // setState={setAddress}
-                              setState={handleChange}
-                           >
-                              Address
-                           </InputLabel>
-                           <InputLabel
-                              ID="zipCode"
-                              Type="text"
-                              Placeholder="10001"
-                              // setState={setZipCode}
-                              setState={handleChange}
-                           >
-                              ZIP Code
-                           </InputLabel>
-                           <InputLabel
-                              ID="city"
-                              Type="text"
-                              Placeholder="New York"
-                              // setState={setCity}
-                              setState={handleChange}
-                           >
-                              city
-                           </InputLabel>
-                           <InputLabel
-                              ID="country"
-                              Type="text"
-                              Placeholder="United States"
-                              // setState={setCounrty}
-                              setState={handleChange}
-                           >
-                              country
-                           </InputLabel>
+                           {InputGroup2.map((input) => {
+                              return (
+                                 <InputLabel key={input.index} {...input} />
+                              );
+                           })}
                         </div>
                         <div className="flex flex-wrap space-y-6">
                            <p className="w-full text-sub uppercase text-primary -mb-2">
@@ -247,24 +262,14 @@ function Checkout(props: Props) {
                               <div className="space-y-6 mt-8 w-full">
                                  {eMoney ? (
                                     <div className="flex flex-col space-y-6 justify-between md:space-y-0 md:flex-row">
-                                       <InputLabel
-                                          ID="eNumber"
-                                          Placeholder="238521993"
-                                          Type="text"
-                                          // setState={setENumber}
-                                          setState={handleChange}
-                                       >
-                                          e-Money Number
-                                       </InputLabel>
-                                       <InputLabel
-                                          ID="ePin"
-                                          Placeholder="6891"
-                                          Type="text"
-                                          // setState={setEPin}
-                                          setState={handleChange}
-                                       >
-                                          e-Money PIN
-                                       </InputLabel>
+                                       {InputGroup3.map((input) => {
+                                          return (
+                                             <InputLabel
+                                                key={input.index}
+                                                {...input}
+                                             />
+                                          );
+                                       })}
                                     </div>
                                  ) : (
                                     <div className="flex pt-[22px] items-center justify-between">
@@ -354,7 +359,7 @@ function Checkout(props: Props) {
                      <Button
                         buttonStyle="cartBtn"
                         handleClick={handleConfirmation}
-                        isDisabled={disable}
+                        isDisabled={!checkFormValidity()}
                      >
                         continue & pay
                      </Button>

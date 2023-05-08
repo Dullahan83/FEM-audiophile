@@ -53,12 +53,7 @@ function Product(props: Props) {
          <Layout>
             <main className=" px-6 pb-6 md:pb-[70px] md:px-[5.21%] lg:px-[11.46%] lg:pb-160 relative">
                <BackButton />
-               <ProductCard
-                  product={product}
-                  style="productCard"
-                  btnStyle="orangeBtn"
-                  inProduct
-               />
+               <ProductCard product={product} btnStyle="orangeBtn" />
                <div className="flex flex-col space-y-120 lg:space-y-160 mt-[88px]">
                   <div className="flex flex-col space-y-[88px] md:space-y-120 lg:space-y-0  lg:flex-row lg:space-x-[126px]">
                      <div>

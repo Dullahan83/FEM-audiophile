@@ -27,9 +27,6 @@ function ProductCartCard({ id, checkout }: ProductProps) {
    const handleRemove = () => {
       dispatch(removeItem(newProduct));
    };
-   // useEffect(() => {
-   //    dispatch(updateQuantity(newProduct));
-   // }, [count]);
    return (
       <div className="flex justify-between items-center" data-id={id}>
          <figure className="relative flex items-center w-full group">

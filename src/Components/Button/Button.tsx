@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef } from "react";
+import React, { ComponentPropsWithoutRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 type ButtonProps = {
    target?: string;
@@ -22,12 +22,14 @@ function Button({
       handleClick && handleClick();
       target && window.scrollTo(0, 0);
    };
+
+   console.log(isDisabled);
    if (buttonStyle === "blackBtn") {
       return (
          <button
             className={`py-[15px] px-[30px] w-fit bg-black hover:bg-[#4c4c4c] text-white text-[13px] tracking-[1px] uppercase `}
             onClick={handleBtnClick}
-            disabled={isDisabled ? isDisabled : false}
+            disabled={isDisabled && isDisabled}
             {...props}
          >
             {children}
@@ -52,7 +54,7 @@ function Button({
             buttonStyle === "cartBtn" && "w-full"
          }`}
          onClick={handleBtnClick}
-         disabled={isDisabled ? isDisabled : false}
+         disabled={isDisabled && isDisabled}
          {...props}
       >
          {children}

@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import CategoryHeading from "../Components/CategoryHeading/CategoryHeading";
-import ProductCard from "../Components/ProductCard/ProductCard";
+import ProductCard, {
+   CategoryCard,
+} from "../Components/ProductCard/ProductCard";
 import PublicityCard from "../Components/PublicityCard/PublicityCard";
 import ThumbnailGroup from "../Components/Thumbnail/ThumbnailGroup";
 import { useAppSelector } from "../Features/Hooks";
@@ -54,11 +56,10 @@ function Headphones(props: Props) {
             <main className="flex flex-col px-[6.4%] md:px-[5.21%] pt-16 pb-[120px] space-y-[120px] md:pt-24 md:pb-24 lg:pt-[120px] lg:pb-[200px] lg:px-[11.46%] lg:space-y-40">
                {headphones.reverse().map((headphone: Product, key: number) => {
                   return (
-                     <ProductCard
+                     <CategoryCard
                         product={headphone}
                         key={key}
                         btnStyle="orangeBtn"
-                        style="categoryCard"
                      />
                   );
                })}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Button from "../Components/Button/Button";
 import CategoryHeading from "../Components/CategoryHeading/CategoryHeading";
-import ProductCard from "../Components/ProductCard/ProductCard";
+import ProductCard, { HomeCard } from "../Components/ProductCard/ProductCard";
 import PublicityCard from "../Components/PublicityCard/PublicityCard";
 import ThumbnailGroup from "../Components/Thumbnail/ThumbnailGroup";
 import { useAppDispatch, useAppSelector } from "../Features/Hooks";
@@ -63,14 +63,10 @@ function Home(props: Props) {
       <>
          <Layout>
             <CategoryHeading pageStyle="homepage">
-               <ProductCard
-                  product={mark2[0]}
-                  btnStyle="orangeBtn"
-                  style="homeCard"
-               >
+               <HomeCard product={mark2[0]} btnStyle="orangeBtn">
                   Experience natural, lifelike audio and exceptional build
                   quality made for the passionate music enthusiast.
-               </ProductCard>
+               </HomeCard>
             </CategoryHeading>
 
             <main className="flex flex-col px-6 md:px-10 pt-10 pb-[120px] relative  md:pt-24 md:pb-24 lg:pt-[120px] lg:pb-[200px] lg:px-[165px]">

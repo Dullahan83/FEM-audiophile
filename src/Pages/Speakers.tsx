@@ -1,7 +1,9 @@
 import React from "react";
 import CategoryHeading from "../Components/CategoryHeading/CategoryHeading";
 import Modal from "../Components/Modal/Modal";
-import ProductCard from "../Components/ProductCard/ProductCard";
+import ProductCard, {
+   CategoryCard,
+} from "../Components/ProductCard/ProductCard";
 import PublicityCard from "../Components/PublicityCard/PublicityCard";
 import ThumbnailGroup from "../Components/Thumbnail/ThumbnailGroup";
 import { useAppSelector } from "../Features/Hooks";
@@ -53,11 +55,10 @@ function Speakers(props: Props) {
                {speakers.length &&
                   speakers.reverse().map((speaker: Product, key: number) => {
                      return (
-                        <ProductCard
+                        <CategoryCard
                            product={speaker}
                            key={key}
                            btnStyle="orangeBtn"
-                           style="categoryCard"
                         />
                      );
                   })}
