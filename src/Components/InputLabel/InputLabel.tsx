@@ -5,6 +5,12 @@ import React, {
    useState,
 } from "react";
 import { useDebounce } from "../hooks";
+import {
+   UseFormRegister,
+   FieldValues,
+   FieldError,
+   FieldErrors,
+} from 'react-hook-form'
 import { FormField, FormType } from "../../Pages/Checkout";
 // type InputProps = {
 //    ID: string;
@@ -22,72 +28,20 @@ type InputProps2 = {
    id: string;
    name: string;
    placeholder: string;
+   options?: any
    type: string;
    label: string;
-   pattern: string;
+   pattern?: string;
    required: boolean;
    Class?: string;
    setState?: (key: keyof Partial<FormType>, value: string) => void;
+   register: UseFormRegister<FieldValues>
+   errors: FieldErrors
 } & ComponentPropsWithoutRef<"input">;
-// function InputLabel({
-//    ID,
-//    Type,
-//    setState,
-//    Class,
-//    children,
-//    Placeholder,
-//    ...props
-// }: InputProps) {
-//    const [hasError, setHasError] = useState<boolean | undefined>();
-//    const [inputValue, setInputValue] = useState("");
-//    const debouncedvalue = useDebounce(inputValue, 800);
-//    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//       setInputValue(e.target.value);
-//       setState && setState(ID as keyof FormType, e.target.value);
-//    };
-//    const handleCheckValidity = () => {
-//       setHasError(!checkValidity(inputValue, ID));
-//    };
-//    useEffect(() => {
-//       handleCheckValidity();
-//    }, [debouncedvalue]);
-//    return (
-//       <div
-//          className={`h-fit w-full flex flex-col  relative ${
-//             Class === "full" ? "md:w-full" : "md:w-[48.9%]"
-//          }`}
-//       >
-//          {hasError && (
-//             <p className="absolute w-fit top-0 right-0 text-xs text-error font-medium ">
-//                Wrong Format
-//             </p>
-//          )}
-//          <label
-//             className={`capitalize text-label ${hasError && "text-error"}`}
-//             htmlFor={ID}
-//          >
-//             {children}
-//          </label>
-//          <input
-//             type={Type}
-//             {...props}
-//             placeholder={Placeholder && Placeholder}
-//             id={ID}
-//             onChange={handleChange}
-//             value={inputValue}
-//             className={` placeholder:text-sm font-bold tracking-tight px-6 py-[18px] border-[1px] mt-2 outline-none outline-2 -outline-offset-2 rounded-lg focus:outline-primary ${
-//                hasError && "border-error"
-//             }`}
-//          />
-//       </div>
-//    );
-// }
-const InputLabel = ({ Class, id, label, setState, ...props }: InputProps2) => {
+
+const InputLabel = ({ Class, id, label, setState,register, options, errors, ...props }: InputProps2) => {
    const [focused, setFocused] = useState(false);
-   const [inputValue, setInputValue] = useState("");
-   const debouncedvalue = useDebounce(inputValue, 800);
    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      // setInputValue(e.target.value);
       setState && setState(id as keyof FormType, e.target.value);
    };
 
@@ -101,23 +55,34 @@ const InputLabel = ({ Class, id, label, setState, ...props }: InputProps2) => {
          }`}
       >
          <input
-            className={`peer placeholder:text-sm  font-bold tracking-tight px-6 py-[18px] border-[#cfcfcf] border-[1px] mt-2 outline-none outline-2 -outline-offset-2 rounded-lg focus:outline-primary invalid:border-error data-[focused=false]:border-[#cfcfcf]`}
+            className={`peer placeholder:text-sm  font-bold tracking-tight px-6 py-[18px] border-[#cfcfcf] border-[1px] mt-2 outline-none outline-2 -outline-offset-2 rounded-lg focus:outline-primary  ${errors[props.name] && "border-red-500"}`}
             id={id}
             data-focused={focused.toString()}
-            {...props}
-            onBlur={handleFocus}
-            onChange={handleChange}
+            // {...props}
+            // // onBlur={handleFocus}
+            // // onChange={handleChange}
             onFocus={() => setFocused(false)}
+            {...register(props.name, options)}
+
          />
-         <span className="absolute hidden peer-invalid:flex peer-data-[focused='false']:hidden w-fit top-0 right-0 text-xs text-error font-medium ">
+         {/* <span className={`absolute hidden ${errors[props.name] && "flex"} peer-invalid:flex peer-data-[focused='false']:hidden w-fit top-0 right-0 text-xs text-error font-medium `}>
             Wrong Format
-         </span>
+         </span> */}
          <label
-            className={`capitalize text-label peer-invalid:text-error peer-data-[focused='false']:text-black`}
+            className={`capitalize text-label relative  ${errors[props.name] ? "text-red-500": "text-black"}`}
             htmlFor={id}
          >
             {label}
+            {errors[props.name] && (
+            <p
+               className={`bg-white absolute font-normal top-0 right-0 text-red-500 text-xs
+         `}
+            >
+               {"Wrong Format"}
+            </p>
+         )}
          </label>
+         
       </div>
    );
 };

@@ -7,10 +7,11 @@ function PublicityCard(props: Props) {
    return (
       <figure className="flex flex-col space-y-10 lg:flex-row-reverse lg:space-y-0 lg:w-full lg:justify-between">
          <img
-            className="rounded-lg lg:w-[48.65%] lg:aspect-[0.918]"
-            src="./assets/shared/desktop/image-best-gear.jpg"
-            srcSet="./assets/shared/mobile/image-best-gear.jpg 654w, ./assets/shared/tablet/image-best-gear.jpg 1378w, ./assets/shared/desktop/image-best-gear.jpg 540w"
-            sizes="(max-width: 767px) 654px, (min-width:1023px) 540px, 100vw"
+            className="rounded-lg lg:w-[48.65%] "
+            src="../assets/shared/mobile/image-best-gear.jpg"
+            srcSet="../assets/shared/mobile/image-best-gear.jpg 654w, ../assets/shared/tablet/image-best-gear.jpg 1378w, ../assets/shared/desktop/image-best-gear.jpg 540w"
+            // sizes="(max-width: 767px) 654px, (max-width:1023px) 1378px, 100vw"
+            sizes="(min-width: 1024px) 540px, (min-width: 768px) 1378px, (max-width: 767px) 654px, 100vw"
             alt=""
          />
          <figcaption className="flex items-center lg:w-[40%]">

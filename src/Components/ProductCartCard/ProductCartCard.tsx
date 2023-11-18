@@ -37,7 +37,7 @@ function ProductCartCard({ id, checkout }: ProductProps) {
                ></span>
             )}
             <img
-               src={`./assets/cart/image-${cartImg && cartImg}.jpg`}
+               src={`../assets/cart/image-${cartImg && cartImg}.jpg`}
                alt=""
                className={`${
                   checkout ? "w-[50px]" : "w-16"

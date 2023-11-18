@@ -63,8 +63,8 @@ export const HomeCard = ({ product, children, btnStyle }: Props) => {
             }
          >
             <img
-               src="./assets/home/desktop/Bitmap.png"
-               srcSet="./assets/home/mobile/Bitmap.png 375w, ./assets/home/tablet/Bitmap.png 768w, ./assets/home/desktop/Bitmap.png 1024w"
+               src="/dist/assets/home/desktop/Bitmap.png"
+               srcSet="/dist/assets/home/mobile/Bitmap.png 375w, /dist/assets/home/tablet/Bitmap.png 768w, /dist/assets/home/desktop/Bitmap.png 1024w"
                sizes="(max-width: 767px) 375px, (max-width:1023px) 768px, 100vw"
                className="  object-cover md:object-contain lg:object-cover w-full h-full"
             />
@@ -167,7 +167,7 @@ export const CategoryCard = ({ product, children, btnStyle }: Props) => {
             srcSet={`./${product && product.categoryImage.mobile} 654w, ./${
                product && product.categoryImage.tablet
             } 1378w, ./${product && product.categoryImage.desktop} 1080w`}
-            sizes="(max-width: 767px) 654px, (max-width: 1023px) 1378px, (min-width: 1024px) 1080px, 100vw"
+            sizes="(max-width: 767px) 654px, (max-width: 1023px) 1378px,  100vw"
             alt=""
             className=" rounded-lg w-full aspect-[0.93] md:aspect-[1.95] lg:aspect-[0.964] lg:w-[48.65%]"
          />

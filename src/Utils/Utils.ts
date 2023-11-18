@@ -40,7 +40,7 @@ const getTotalPrice = (cartProducts: cartProduct[]) => {
    return sum;
 };
 
-const nameRegex = new RegExp(/^[A-Z]{1}[a-z]{3,}[ -]{1}[A-Z]{1}[a-z]{1,}/);
+const nameRegex = new RegExp(/^[A-Z]{1}[a-z]{3,}/);
 const mailRegex = new RegExp(
    /[a-zA-Z0-9.]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,5}/
 );
@@ -65,6 +65,8 @@ const checkFormValidity = () => {
          return;
       }
       if (!checkFieldValidity(input)) {
+      console.log(input.id, checkFieldValidity(input))
+
          // console.log(`${input.id} est pas bon`);
          shouldSkip = true;
          isValid = false;
